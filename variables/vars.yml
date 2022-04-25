@@ -1,0 +1,6 @@
+user: "web"
+password: "$6$r7pcLmFLPtYo1ebL$ix/LOkCvKTUSOIv.T026qE8nWL5s.incmafhVMfB3bqX8gxTP7oaBMx9YOqKf14EO77tVyObfZo44n/evAX5Q/"
+server_name: "{{ ansible_default_ipv4.address }}" 
+ansible_python_interpreter: "/bin/python3.6"
+docker_image: "www123vika123/epam:latest"
+docker_network_name: web_network

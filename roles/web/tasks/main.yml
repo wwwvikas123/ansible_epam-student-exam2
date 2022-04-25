@@ -1,0 +1,32 @@
+---
+
+####start containers
+    - name: Create a network
+      docker_network:
+        name: "{{ docker_network_name }}"
+
+    - name: Create my basic list of containers to stop
+      set_fact:
+        replicas:
+          - port: "5005"
+            container: "web_1"
+          - port: "5006"
+            container: "web_2"
+          - port: "5007"
+            container: "web_3"
+
+    - name: run containers
+      docker_container:
+        name: "{{ item.container }}"
+        state: started
+        image: "{{ docker_image }}"
+        command: "python3 -m flask run --host=0.0.0.0"
+        pull: true
+        recreate: yes
+        expose:
+         - "{{ item.port }}"
+        env:
+          FLASK_RUN_PORT: "{{ item.port }}"
+        networks:
+          - name: "{{ docker_network_name }}"
+      with_items: "{{ replicas }}"
