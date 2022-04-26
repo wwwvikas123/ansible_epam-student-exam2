@@ -21,24 +21,26 @@ environment {
             
         }   
 
-        stage('Deploy') { 
+        stage('Instal depen-s') { 
             steps {
-                script{
-                    sh "echo ${env.PRIVATE_KEY} >> ~/.ssh/ansible_rsa"
+                withCredentials([sshUserPrivateKey(credentialsId: 'ansible_key', keyFileVariable: 'PRIVATE')]) {
                     sh  "ansible-galaxy install --roles-path=roles -r requirements.yml"
                 }
             }
         }
 
-        stage('Run unittests') {
+        stage('Deploy') { 
+            steps {
+                withCredentials([sshUserPrivateKey(credentialsId: 'ansible_key', keyFileVariable: 'PRIVATE')]) {
+                    sh  "ansible-playbook side.yml -K -vv --private-key $PRIVATE"
+                }
+            }
+        }
+
+        stage('Run tests') {
             steps {
                 script {
-                    docker.image("${env.IMAGE_NAME}").withRun {c ->
-                    docker.image("${env.IMAGE_NAME}").inside{
-                          sh "coverage run -m pytest"
-                          sh "coverage report"
-                        }
-                    }
+                 sh "/bin/bash tests.sh"
                 }
             }
         }                                                                           
