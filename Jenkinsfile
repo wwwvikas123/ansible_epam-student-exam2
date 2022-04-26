@@ -34,7 +34,7 @@ environment {
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'ansible_key', keyFileVariable: 'PRIVATE')]) {
                     sh "ls && pwd"
-                    sh  "ansible-playbook side.yml -K -vv --private-key $PRIVATE"
+                    sh  "ansible-playbook side.yml -vv --private-key $PRIVATE"
                 }
             }
         }
