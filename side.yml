@@ -4,19 +4,16 @@
   gather_facts: yes
   become: yes
   vars_files:
-    - ./variables/vars.yml
+    - ./global_vars/vars.yml
 
   tasks:
 
     - include_role:
         name: docker
-      vars:
-        user: "web" 
 
-
-    #- name: Configure nginx balancer using role
-    #  import_role:
-    #    name: web
+  #  - name: Configure nginx balancer using role
+  #    import_role:
+  #      name: web
 
 
    # - name: Configure nginx balancer using role

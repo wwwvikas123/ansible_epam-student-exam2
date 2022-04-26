@@ -4,3 +4,7 @@ server_name: "{{ ansible_default_ipv4.address }}"
 ansible_python_interpreter: "/bin/python3.6"
 docker_image: "www123vika123/epam:latest"
 docker_network_name: web_network
+pip_version: pip3.6
+port_1: 5005
+port_2: 5006
+port_3: 5007

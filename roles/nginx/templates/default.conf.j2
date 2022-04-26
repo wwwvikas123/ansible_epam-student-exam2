@@ -1,0 +1,14 @@
+    server {
+        upstream web {
+            server web_1:{{ port_1 }};
+            server web_2:{{ port_2 }};
+            server web_3:{{ port_3 }};
+        }
+        listen       80;
+        server_name  {{ ansible_facts['hostname'] }};
+        
+    location / {
+       proxy_pass: http://web;
+      }
+    }
+

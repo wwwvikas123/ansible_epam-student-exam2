@@ -8,11 +8,11 @@
     - name: Create my basic list of containers to stop
       set_fact:
         replicas:
-          - port: "5005"
+          - port: "{{ port_1 }}"
             container: "web_1"
-          - port: "5006"
+          - port: "{{ port_2 }}"
             container: "web_2"
-          - port: "5007"
+          - port: "{{ port_3 }}"
             container: "web_3"
 
     - name: run containers

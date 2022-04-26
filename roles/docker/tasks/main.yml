@@ -33,7 +33,7 @@
       pip: 
         name:
           - docker
-        executable: pip3.6
+        executable: "{{ pip_version }}"
 
     - name: Add Docker repo
       get_url:
