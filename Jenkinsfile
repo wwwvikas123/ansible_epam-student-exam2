@@ -25,7 +25,7 @@ environment {
             steps {
                 script {
                     sh "ls && pwd"
-                    sh "ansible-galaxy install -c --roles-path=roles -r requirements.yml"
+                    sh "ansible-galaxy install --roles-path=roles -r requirements.yml"
                 }      
             }
         }
