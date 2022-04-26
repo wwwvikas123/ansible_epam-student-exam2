@@ -30,17 +30,3 @@
         volumes:
           - /opt/web-app/conf/default.conf:/etc/nginx/conf.d/default.conf
           - /opt/web-app/conf/nginx.conf:/etc/nginx/nginx.conf
-
-  #  - name: enable 80 port
-  #    firewalld:
-  #      zone: public
-  #      port: 80/tcp
-  #      permanent: true
-  #      state: enabled
-#
-  #  - name: enable 443 port
-  #    firewalld:
-  #      zone: public
-  #      port: 443/tcp
-  #      permanent: true
-  #      state: enabled
