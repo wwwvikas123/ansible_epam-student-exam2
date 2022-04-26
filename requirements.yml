@@ -1,0 +1,14 @@
+# from GitHub, overriding the name and specifying a specific tag
+- name: docker
+  src: git+https://github.com/wwwvikas123/ansible-role-docker.git
+  version: main
+
+- name: web
+  src: git+https://github.com/wwwvikas123/ansible-role-web.git
+  version: main
+
+- name: nginx
+  src: git+https://github.com/wwwvikas123/ansible-role-nginx.git
+  version: main
+
+  
