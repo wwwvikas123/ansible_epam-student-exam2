@@ -3,7 +3,6 @@ agent {
   label 'unittest'
 }
 environment {
-      registryCredential = 'loseva-dockerhub'
       IMAGE_NAME = "www123vika123/epam"
     }
     options {
@@ -25,7 +24,7 @@ environment {
         stage('Deploy') { 
             steps {
                 script{
-                    sh "echo ${env.IMAGE_NAME} >> "
+                    sh "echo ${env.PRIVATE_KEY} >> ~/.ssh/ansible_rsa"
                     sh  "ansible-galaxy install --roles-path=roles -r requirements.yml"
                 }
             }
