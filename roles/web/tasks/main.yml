@@ -4,6 +4,7 @@
     - name: Create a network
       docker_network:
         name: "{{ docker_network_name }}"
+        driver: bridge
 
     - name: Create my basic list of containers to stop
       set_fact:

@@ -1,14 +1,20 @@
+    upstream web {
+        server web_1:{{ port_1 }};
+        server web_2:{{ port_2 }};
+        server web_3:{{ port_3 }};
+    }
+
     server {
-        upstream web {
-            server web_1:{{ port_1 }};
-            server web_2:{{ port_2 }};
-            server web_3:{{ port_3 }};
-        }
         listen       80;
-        server_name  {{ ansible_facts['hostname'] }};
+        server_name  {{ ansible_facts['default_ipv4']['address'] }};
         
-    location / {
-       proxy_pass: http://web;
-      }
+        location / {
+            proxy_set_header Host $host;
+            proxy_pass http://web/;
+            add_header X-Content-Type-Options nosniff;
+            add_header X-Frame-Options "DENY" always;
+            add_header X-XSS-Protection "1; mode=block";
+            add_header Strict-Transport-Security "max-age=31536000; includeSubdomains; preload";
+        }
     }
 
