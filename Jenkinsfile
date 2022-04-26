@@ -23,9 +23,10 @@ environment {
 
         stage('Instal depen-s') { 
             steps {
+                script {
                     sh "ls && pwd"
-                    sh  "ansible-galaxy install --roles-path=roles -r requirements.yml"
-                
+                    sh "/usr/bin/ansible-galaxy install --roles-path=roles -r requirements.yml"
+                }      
             }
         }
 
