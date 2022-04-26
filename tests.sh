@@ -1,3 +1,3 @@
-STATUSCODE=$(curl --silent --output /dev/stderr --write-out "%{http_code}" http://localhost:10002)
+STATUSCODE=$(curl --silent --output /dev/stderr --write-out "%{http_code}" http://192.168.0.102:10002)
 
 if [ "$STATUSCODE" -ne 200 ]; then exit "$STATUSCODE"; fi
