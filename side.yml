@@ -8,14 +8,14 @@
 
   tasks:
 
-    - include_role:
-        name: docker
+  #  - include_role:
+  #      name: docker
 
-  #  - name: Configure nginx balancer using role
-  #    import_role:
-  #      name: web
+  # - name: Configure nginx balancer using role
+  #   import_role:
+  #     name: web
 
 
-   # - name: Configure nginx balancer using role
-   #   import_role:
-   #     name: nginx
+    - name: Configure nginx balancer using role
+      import_role:
+        name: nginx
