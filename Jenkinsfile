@@ -25,8 +25,7 @@ environment {
             steps {
                 script {
                     sh "ls && pwd"
-                    sh "ansible-galaxy init --force --offline web"
-                    sh "ansible-galaxy install --roles-path=roles -r requirements.yml"
+                    sh "ansible-galaxy install  --force --offline  --roles-path=roles -r requirements.yml"
                 }      
             }
         }
