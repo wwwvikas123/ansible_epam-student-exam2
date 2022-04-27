@@ -1,1 +1,1 @@
-if [ $(curl -LI http://192.168.0.102:10003 -o /dev/null -w '%{http_code}\n' -s) != "200" ]; then echo "service does not response on port 10002" && exit 1; fi
+if [ $(curl -LI http://192.168.0.102:${EXTERNAL_PORT} -o /dev/null -w '%{http_code}\n' -s) != "200" ]; then echo "service does not response on port 10002" && exit 1; fi
