@@ -5,7 +5,14 @@ ansible_python_interpreter: "/bin/python3.6"
 docker_image: "www123vika123/epam:latest"
 docker_network_name: web_network
 pip_version: pip3.6
-###containers ports
+###web containers ports
 port_1: 5005
 port_2: 5006
 port_3: 5007
+###web container names
+service_1: web_1
+service_2: web_2
+service_3: web_3
+###balanser
+nginx_exposed_port: 10003
+nginx_container_name: web_nginx
