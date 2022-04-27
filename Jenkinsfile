@@ -4,7 +4,7 @@ agent {
 }
 environment {
       IMAGE_NAME = "www123vika123/epam"
-      EXTERNAL_PORT = 10003
+      EXTERNAL_PORT = 10005
       EXTERNAL_ADDRESS = '192.168.0.102'
       CONTAINER_NAME = "calculator"
     }
@@ -34,10 +34,6 @@ environment {
         stage('Deploy') { 
             steps {
                 ansiblePlaybook playbook: 'side.yml', inventory: 'myhosts.ini', credentialsId: 'ansible_key'
-                //withCredentials([sshUserPrivateKey(credentialsId: 'ansible_key', keyFileVariable: 'PRIVATE')]) {
-                //    sh "ls && pwd"
-                //    sh  "ansible-playbook side.yml -vv --private-key $PRIVATE"
-                //}
             }
         }
 

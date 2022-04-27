@@ -8,9 +8,9 @@
 
   tasks:
 
-  #  - name: Configure docker using role
-  #    import_role:
-  #      name: docker
+    - name: Configure docker using role
+      import_role:
+        name: docker
   #    vars:
   #      ansible_python_interpreter: /usr/bin/python2  
  
