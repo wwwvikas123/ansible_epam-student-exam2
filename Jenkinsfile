@@ -6,6 +6,7 @@ environment {
       IMAGE_NAME = "www123vika123/epam"
       EXTERNAL_PORT = 10003
       EXTERNAL_ADDRESS = '192.168.0.102'
+      CONTAINER_NAME = "calculator"
     }
 
     stages {

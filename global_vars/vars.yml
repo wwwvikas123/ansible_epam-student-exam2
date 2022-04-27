@@ -2,17 +2,17 @@ user: "web"
 password: "$6$r7pcLmFLPtYo1ebL$ix/LOkCvKTUSOIv.T026qE8nWL5s.incmafhVMfB3bqX8gxTP7oaBMx9YOqKf14EO77tVyObfZo44n/evAX5Q/"
 #######################docker
 ansible_python_interpreter: "/bin/python3.6"
-docker_image: "www123vika123/epam-master:latest"
-docker_network_name: web_network
+docker_image: "{{ lookup('env','IMAGE_NAME') }}:latest"
+docker_network_name: "{{ lookup('env','CONTAINER_NAME') }}_network"
 pip_version: pip3.6
 ###web containers ports
 port_1: 5005
 port_2: 5006
 port_3: 5007
 ###web container names
-service_1: web_1
-service_2: web_2
-service_3: web_3
+service_1: "{{ lookup('env','CONTAINER_NAME') }}_1"
+service_2: "{{ lookup('env','CONTAINER_NAME') }}_2"
+service_3: "{{ lookup('env','CONTAINER_NAME') }}_3"
 ###balanser
-nginx_exposed_port: 10003
-nginx_container_name: web_nginx
+nginx_exposed_port: "{{ lookup('env','EXTERNAL_PORT') }}"
+nginx_container_name: "{{ lookup('env','CONTAINER_NAME') }}_nginx"
