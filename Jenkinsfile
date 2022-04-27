@@ -52,8 +52,8 @@ environment {
     }
 }
     post {
-    // Clean after build
         always {
-            cleanWs cleanWhenNotBuilt: true, notFailBuild: true
-            }    
+           cleanWs cleanWhenNotBuilt: true, notFailBuild: true
+        }
     }
+}
