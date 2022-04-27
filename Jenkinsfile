@@ -13,6 +13,7 @@ environment {
 
         stage('Checkout code') { 
             steps {
+                cleanWs cleanWhenNotBuilt: false, notFailBuild: true
                 checkout scm
                 script { 
                     sh 'printenv'
