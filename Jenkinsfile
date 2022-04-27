@@ -4,7 +4,8 @@ agent {
 }
 environment {
       IMAGE_NAME = "www123vika123/epam"
-      EXTERNAL_PORT = 1000
+      EXTERNAL_PORT = 10003
+      EXTERNAL_ADDRESS = 192.168.0.102
     }
     options {
       parallelsAlwaysFailFast()
