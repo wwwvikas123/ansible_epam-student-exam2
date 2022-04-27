@@ -18,7 +18,7 @@
       import_role:
         name: web
       vars:
-        ansible_python_interpreter: /usr/bin/python2.7
+        ansible_python_interpreter: /usr/bin/python2
 
 
     - name: Configure nginx balancer using role
