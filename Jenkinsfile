@@ -49,13 +49,14 @@ environment {
                 }
             }
         }
-        stage('Cleaning up') {
-            steps{
-                script {
-                    cleanWs cleanWhenNotBuilt: true, notFailBuild: true
-                }
-            }   
-        }    
-    }   
+    }
 }
-
+    post {
+    // Clean after build
+        always {
+            cleanWs(cleanWhenNotBuilt: true,
+                    deleteDirs: true,
+                    disableDeferredWipeout: true,
+                    notFailBuild: true)
+            }    
+    }

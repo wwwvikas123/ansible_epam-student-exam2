@@ -1,0 +1,14 @@
+namespace: docker 
+name: docker
+version: 1.0.0
+readme: README.md
+authors:
+- vika loseva
+description: docker collection, needs $user
+license:
+- GPL-2.0
+license_file: ''
+tags: []
+dependencies: {}
+repository: https://github.com/wwwvikas123/ansible-role-docker
+build_ignore: []
