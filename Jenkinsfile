@@ -52,7 +52,7 @@ environment {
         stage('Cleaning up') {
             steps{
                 script {
-                    cleanWs cleanWhenNotBuilt: false, notFailBuild: true
+                    cleanWs cleanWhenNotBuilt: true, notFailBuild: true
                 }
             }   
         }    
