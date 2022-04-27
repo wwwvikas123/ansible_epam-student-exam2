@@ -54,9 +54,6 @@ environment {
     post {
     // Clean after build
         always {
-            cleanWs(cleanWhenNotBuilt: true,
-                    deleteDirs: true,
-                    disableDeferredWipeout: true,
-                    notFailBuild: true)
+            cleanWs cleanWhenNotBuilt: false, notFailBuild: true
             }    
     }
