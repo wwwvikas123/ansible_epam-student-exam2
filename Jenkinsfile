@@ -33,11 +33,11 @@ environment {
 
         stage('Deploy') { 
             steps {
-                ansiblePlaybook playbook: 'side.yml', inventory: 'myhosts.ini', credentialsId: 'ansible_key'
-                //withCredentials([sshUserPrivateKey(credentialsId: 'ansible_key', keyFileVariable: 'PRIVATE')]) {
-                //    sh "ls && pwd"
-                //    sh  "ansible-playbook side.yml -vv --private-key $PRIVATE"
-               // }
+                //ansiblePlaybook playbook: 'side.yml', inventory: 'myhosts.ini', credentialsId: 'ansible_key'
+                withCredentials([sshUserPrivateKey(credentialsId: 'ansible_key', keyFileVariable: 'PRIVATE')]) {
+                    sh "ls && pwd"
+                    sh  "ansible-playbook side.yml -vv --private-key $PRIVATE"
+                }
             }
         }
 
