@@ -13,7 +13,6 @@ environment {
 
         stage('Checkout code') { 
             steps {
-                cleanWs cleanWhenNotBuilt: false, notFailBuild: true
                 checkout scm
                 script { 
                     sh 'printenv'
@@ -34,11 +33,11 @@ environment {
 
         stage('Deploy') { 
             steps {
-                //ansiblePlaybook playbook: 'side.yml', inventory: 'myhosts.ini', credentialsId: 'ansible_key'
-                withCredentials([sshUserPrivateKey(credentialsId: 'ansible_key', keyFileVariable: 'PRIVATE')]) {
-                    sh "ls && pwd"
-                    sh  "ansible-playbook side.yml -vv --private-key $PRIVATE"
-                }
+                ansiblePlaybook playbook: 'side.yml', inventory: 'myhosts.ini', credentialsId: 'ansible_key'
+                //withCredentials([sshUserPrivateKey(credentialsId: 'ansible_key', keyFileVariable: 'PRIVATE')]) {
+                //    sh "ls && pwd"
+                //    sh  "ansible-playbook side.yml -vv --private-key $PRIVATE"
+                //}
             }
         }
 
@@ -55,6 +54,6 @@ environment {
     post {
     // Clean after build
         always {
-            cleanWs cleanWhenNotBuilt: false, notFailBuild: true
+            cleanWs cleanWhenNotBuilt: true, notFailBuild: true
             }    
     }
