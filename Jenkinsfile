@@ -50,7 +50,7 @@ environment {
             }
         }
     }
-}
+
     post {
         always {
            cleanWs cleanWhenNotBuilt: true, notFailBuild: true
