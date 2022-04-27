@@ -42,11 +42,18 @@ environment {
         stage('Run tests') {
             steps {
                 script {
-                 sh "ls && pwd"   
+                 sh "cat global_vars/vars.yml && ls && pwd"   
                  sh "/bin/bash tests.sh"
                 }
             }
-        }                                                                           
-    }
-}        
+        }
+        stage('Cleaning up') {
+            steps{
+                script {
+                    cleanWs cleanWhenNotBuilt: false, notFailBuild: true
+                }
+            }   
+        }    
+    }   
+}
 
