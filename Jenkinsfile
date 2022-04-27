@@ -7,16 +7,14 @@ environment {
       EXTERNAL_PORT = 10003
       EXTERNAL_ADDRESS = '192.168.0.102'
     }
-    options {
-      parallelsAlwaysFailFast()
-    }
 
     stages {
 
         stage('Checkout code') { 
             steps {
                 checkout scm
-                script {
+                script { 
+                    sh 'printenv'
                     sh "ls -al && pwd"
                 }
             }
