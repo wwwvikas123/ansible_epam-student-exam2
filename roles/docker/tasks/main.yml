@@ -1,0 +1,78 @@
+---
+# tasks file for web
+
+    - name: Creating Group for user
+      group:
+         name: "{{ user }}"
+         state: present
+
+    - name: Add the user 'web' with a specific uid and a primary group of 'admin'
+      user:
+        name: "{{ user }}"
+        password: "{{ password }}"
+        shell: /bin/bash
+        uid: 1040
+        groups: "{{ user }}"
+
+    - name: Install yum-utils and epel
+      yum: name={{ item }} state=latest update_cache=yes
+      loop: [ 'yum-utils', 'epel-release']      
+
+    - name: Upgrade all packages
+      dnf:
+        name: '*'
+        state: latest         
+
+##############INSTALL DOCKER
+
+    - name: Install lvm2 and device-mapper-persistent-data
+      yum: name={{ item }} state=latest update_cache=yes
+      loop: [ 'yum-utils', 'device-mapper-persistent-data', 'lvm2', 'python3-pip' ] 
+
+    - name: Install Docker module for Python (used by Ansible)
+      pip: 
+        name:
+          - docker
+        executable: "{{ pip_version }}"
+
+    - name: Add Docker repo
+      get_url:
+        url: https://download.docker.com/linux/centos/docker-ce.repo
+        dest: /etc/yum.repos.d/docer-ce.repo
+      become: yes
+
+    - name: Enable Docker Edge repo
+      ini_file:
+        dest: /etc/yum.repos.d/docer-ce.repo
+        section: 'docker-ce-edge'
+        option: enabled
+        value: 0
+      become: yes
+
+    - name: Enable Docker Test repo
+      ini_file:
+        dest: /etc/yum.repos.d/docer-ce.repo
+        section: 'docker-ce-test'
+        option: enabled
+        value: 0
+      become: yes
+
+    - name: Install Docker
+      package:
+        name: docker-ce
+        state: latest
+      become: yes
+
+    - name: Start Docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
+      become: yes
+
+    - name: Add user web to docker group
+      user:
+        name: "{{ user }}"
+        groups: docker
+        append: yes
+      become: yes
