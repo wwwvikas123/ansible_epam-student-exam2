@@ -11,8 +11,8 @@
     - name: Configure docker using role
       import_role:
         name: docker
-      vars:
-        ansible_python_interpreter: /usr/bin/python2  
+  #    vars:
+  #      ansible_python_interpreter: /usr/bin/python2  
  
     - name: Configure web app using role
       import_role:
