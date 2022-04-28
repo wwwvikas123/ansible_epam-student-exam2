@@ -3,9 +3,9 @@ agent {
   label 'unittest'
 }
 environment {
-      IMAGE_NAME = "www123vika123/epam"
-      EXTERNAL_PORT = 10005
-      EXTERNAL_ADDRESS = '192.168.0.102'
+  //    IMAGE_NAME = "www123vika123/epam"
+      //EXTERNAL_PORT = 10005
+      //EXTERNAL_ADDRESS = '192.168.0.102'
       //CONTAINER_NAME = "calculator"
     }
 
