@@ -20,7 +20,6 @@
       vars:
         ansible_python_interpreter: /usr/bin/python3
 
-
     - name: Configure nginx balancer using role
       import_role:
         name: nginx
